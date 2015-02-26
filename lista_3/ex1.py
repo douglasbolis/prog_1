@@ -21,30 +21,93 @@ def f_insereFilmeAtores(dicAcervo):
 #fim funcao
 
 def f_exibeAtores(dicAcervo, filmeSt, filmeNd, cod):
+    lst = []
+
+    print("")
     if cod == 1:
         print("Atores de %s e %s:" %(filmeSt, filmeNd))
         for el in dicAcervo[filmeSt]:
-            print("\t-%s" %(el))
+            f_insereLista(lst, el)
         #fim for
         for el in dicAcervo[filmeNd]:
-            print("\t-%s" %(el))
+            f_insereLista(lst, el)
+        #fim for
+
+        for elem in lst:
+            print("\t-%s" %(elem))
         #fim for
     else:
         if cod == 2:
-           s=0
+            print("Atores de %s e %s:" %(filmeSt, filmeNd))
+            for el in dicAcervo[filmeSt]:
+                for il in dicAcervo[filmeNd]:
+                    if el == il:
+                        print("\t-%s" %(el))
+                    #fim if
+                #fim for
+            #fim for
         else:
-            s=0
+            print("Atores de %s e %s:" %(filmeSt, filmeNd))
+            f_somenteEmUmFilme(dicAcervo, filmeSt, filmeNd)
+            f_somenteEmUmFilme(dicAcervo, filmeNd, filmeSt)
         #fim if
     #fim id
 #fim funcao
 
+def f_insereLista(lst, el):
+    igual = False
+
+    for i in range(len(lst)):
+        if el == lst[i]:
+            igual = True
+        #fim if
+    #fim for
+
+    if not igual:
+        lst.append(el)
+    #fim if
+#fim funcao
+
+def f_somenteEmUmFilme(dic, filmeA, filmeB):
+    contA, contB, igual = 0, 0, False
+    while contA < len(dic[filmeA]):
+        igual = False
+        contB = 0
+        while contB < len(dic[filmeB]):
+            if dic[filmeA][contA] == dic[filmeB][contB]:
+                igual = True
+            #fim if
+            contB += 1
+        #fim while
+        if not igual:
+            print("\t-%s" %(dic[filmeA][contA]))
+        #fim if
+        contA += 1
+    #fim while
+#fim funcao
+
 def f_imprimeFilmes(dic):
     print("----------------- Filmes -----------------")
-    for chave, valor in dic.items():
+    for chave in dic.keys():
         print("%s" %(chave))
     #fim for
     print("")
 #fim funcao
+
+def f_contracenouAtor(dic, ator):
+    lst, contracanou = [], False
+
+    print("Os(As) Atores/Atrizes que contracenaram com %s: " %(ator))
+    for chave, valor in dic.items():
+        for elem in valor:
+            if ator == elem:
+                contracenou = True
+            #fim if
+        #fim for
+    #fim for
+#fim funcao
+
+
 
 def main():
     dicAcervo = {
@@ -59,17 +122,33 @@ def main():
     #f_adicionaFilmeAtor(dicAcervo, nomeFilme, nomeAtor)
     #f_insereFilmeAtores(dicAcervo)
 
-    f_imprimeFilmes(dicAcervo)
-
-    print("Escolha dois filmes da lista acima")
-    filmeSt = input("Primeiro Filme: ")
-    filmeNd = input("Segundo Filme: ")
-
-    while cod!= 0:
-        cod=1
-        f_exibeAtores(dicAcervo, filmeSt, filmeNd, cod)
-        cod=0
+    # f_imprimeFilmes(dicAcervo)
+    #
+    # print("Escolha dois filmes da lista acima")
+    # filmeSt = input("Primeiro Filme: ")
+    # filmeNd = input("Segundo Filme: ")
+    # print("\nFilmes: '%s e %s'" %(filmeSt, filmeNd))
+    # print("1 - Exibir na tela todos os Atores que aparecem nos dois Filmes")
+    # print("2 - Exibir na tela todos os Atores que estao nos dois Filmes")
+    # print("3 - Exibir na tela todos os Atores que estao somente em um dos Filmes")
+    # print("0 - Encerra")
+    # cod = int(input("Opcao: "))
+    #
+    # while cod != 0:
+    #     f_exibeAtores(dicAcervo, filmeSt, filmeNd, cod)
+    #     print("\nFilmes: '%s e %s'" %(filmeSt, filmeNd))
+    #     print("1 - Exibir na tela todos os Atores que aparecem nos dois Filmes")
+    #     print("2 - Exibir na tela todos os Atores que estao nos dois Filmes")
+    #     print("3 - Exibir na tela todos os Atores que estao somente em um dos Filmes")
+    #     print("0 - Encerra")
+    #     cod = int(input("Opcao: "))
     #fim while
+
+    nomeAtor = input("Informe o nome de um Ator: ")
+    f_contracenouAtor(dicAcervo, nomeAtor)
+
+
+
 #fim main
 
 if __name__ == "__main__":
