@@ -1,7 +1,6 @@
 __author__ = 'douglas'
 
 def f_adicionaFilmeAtor(d, f, n):
-
     if f in d:
         d[f].append(n)
     else:
@@ -30,12 +29,17 @@ def f_imprimeDados(dic):
         print("%s" %(chave))
         for elemento in valor:
             print("\t- %s" %(elemento))
+        #fim for
+        print("")
     #fim for
-    print("")
 #fim funcao
 
 def main():
-    dicAcervo = {"Achorman 2: The Lengend Continues":["Will Ferrell", "Steve Carell", "Paul Rudd", "Adam McKay"]}
+    dicAcervo = {
+        "Anchorman 2: The Lengend Continues":["Will Ferrell", "Steve Carell", "Paul Rudd", "Adam McKay"],
+        "Ironman": ["Robert Downey Jr", "Terrence Howard", "Jeff Bridges"],
+        "The Avengers": ["Robert Downey Jr", "Mark Rufallo", "Chris Hemsworth", "Chris Evans", "Scarlett Johansson", "Jeremy Renner"]
+        }
     nomeFilme, nomeAtor = "", ""
 
     #nomeFilme = input("Informe o nome do Filme: ")
@@ -44,10 +48,8 @@ def main():
     #f_insereFilmeAtores(dicAcervo)
 
     f_imprimeDados(dicAcervo)
-
-    print(dicAcervo)
 #fim main
 
 if __name__ == "__main__":
     main()
-    #fim if
+#fim if

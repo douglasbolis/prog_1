@@ -40,8 +40,8 @@ def f_cadastraClientes(dicC):
 	#fim while	
 #fim funcao
 
-def f_cadastraLances(dicC, dicP):
-	dicAux, dicLancesAux = {}, {}
+def f_cadastraLances(dicL, dicC, dicP):
+	dicAux = {}
 	cpf, nomeP, lance = "", "", 0.0
 	tpl = ()
 	
@@ -78,11 +78,9 @@ def f_cadastraLances(dicC, dicP):
 	for chave, valor in dicAux.items():
 		if valor[2]:
 			val = valor[1]
-			dicLancesAux[valor[0]] = val
+			dicL[valor[0]] = val
 		#fim if
-	#fim for	
-	
-	return dicLancesAux
+	#fim for
 #fim funcao
 
 def imprime_dados(dic):
@@ -105,7 +103,7 @@ def main():
 	
 	f_cadastraProdutos(dicProdutos)
 	f_cadastraClientes(dicClientes)
-	dicLances = f_cadastraLances(dicClientes, dicProdutos)
+	f_cadastraLances(dicLances, dicClientes, dicProdutos)
 	
 	#print(dicProdutos)
 	#print(dicClientes)
