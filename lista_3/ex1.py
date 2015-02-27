@@ -1,5 +1,6 @@
 __author__ = 'douglas'
 
+# Função do exercício (1)
 def f_adicionaFilmeAtor(d, f, n):
     if f in d:
         d[f].append(n)
@@ -8,6 +9,7 @@ def f_adicionaFilmeAtor(d, f, n):
     #fim if
 #fim funcao
 
+# Função do exercício (2)
 def f_insereFilmeAtores(dicAcervo):
     nomeFilme, nomeAtor, lstAtor = "", "", []
 
@@ -20,6 +22,7 @@ def f_insereFilmeAtores(dicAcervo):
     #fim while
 #fim funcao
 
+# Função do exercício (3)
 def f_exibeAtores(dicAcervo, filmeSt, filmeNd, cod):
     lst = []
 
@@ -58,6 +61,31 @@ def f_exibeAtores(dicAcervo, filmeSt, filmeNd, cod):
     #fim id
 #fim funcao
 
+# Função do exercício (4)
+def f_contracenouAtor(dic, ator):
+    lstFilmes, lstAtores = [], []
+
+    print("\nOs(As) Atores/Atrizes que contracenaram com %s: " %(ator))
+    for chave, valor in dic.items():
+        for elem in valor:
+            if ator == elem:
+                f_insereLista(lstFilmes, chave)
+             #fim if
+        #fim for
+        for elem in lstFilmes:
+            for contr in range(len(dic[elem])):
+                if ator != dic[elem][contr]:
+                    f_insereLista(lstAtores, dic[elem][contr])
+                #fim if
+            #fim for
+        #fim for
+    #fim for
+    for el in lstAtores:
+        print("\t- %s" %(el))
+        #fim for
+#fim funcao
+
+# Função auxiliar para inserir elementos numa lista
 def f_insereLista(lst, el):
     igual = False
 
@@ -72,6 +100,7 @@ def f_insereLista(lst, el):
     #fim if
 #fim funcao
 
+# Funcao auxiliar do exercício (3) para exibir os atores que estao somente em um dos filmes passado pelo parametro
 def f_somenteEmUmFilme(dic, filmeA, filmeB):
     contA, contB, igual = 0, 0, False
     while contA < len(dic[filmeA]):
@@ -90,56 +119,45 @@ def f_somenteEmUmFilme(dic, filmeA, filmeB):
     #fim while
 #fim funcao
 
-def f_imprimeFilmes(dic):
-    print("----------------- Filmes -----------------")
-    for chave in dic.keys():
+# Função auxiliar para exibir os filmes, se o segundo parametro for 'True' ela também exibirá os atores dos filmes
+def f_exibeFilmesAtores(dic, ator):
+    print("\n----------------- Filmes -----------------")
+    for chave, valor in dic.items():
         print("%s" %(chave))
+        if ator:
+            for el in valor:
+                print("\t- %s" %(el))
+            #fim for
+            print("")
+        #fim if
     #fim for
     print("")
 #fim funcao
 
-def f_contracenouAtor(dic, ator):
-    lstFilmes, lstAtores = [], []
-
-    print("\nOs(As) Atores/Atrizes que contracenaram com %s: " %(ator))
-    for chave, valor in dic.items():
-        for elem in valor:
-            if ator == elem:
-                f_insereLista(lstFilmes, chave)
-            #fim if
-        #fim for
-        for elem in lstFilmes:
-            for contr in range(len(dic[elem])):
-                if ator != dic[elem][contr]:
-                    f_insereLista(lstAtores, dic[elem][contr])
-                #fim if
-            #fim for
-        #fim for
-    #fim for
-    for el in lstAtores:
-        print("\t- %s" %(el))
-    #fim for
-#fim funcao
-
-
-
+# Função main do exercicio (5)
 def main():
-    dicAcervo = {
-        "Anchorman 2: The Lengend Continues":["Will Ferrell", "Steve Carell", "Paul Rudd", "Adam McKay"],
-        "Ironman 2": ["Robert Downey Jr", "Mickey Rourke", "Gwyneth Paltrow", "Scarlett Johansson", "Samuel L. Jackson"],
-        "The Avengers": ["Robert Downey Jr", "Mark Rufallo", "Chris Hemsworth", "Chris Evans", "Scarlett Johansson", "Jeremy Renner"],
-        "RED": ["Bruce Willis", "Morgan Freeman", "Helen Mirren", "John Malkovich"],
-        "Sin City": ["Bruce Willis", "Mickey Rourke", "Jessica Alba", "Clive Owen"]
-        }
     nomeFilme, nomeAtor, filmeSt, filmeNd, cod = "", "", "", "", 5
+    dicAcervo = {}
+        # "Anchorman 2: The Lengend Continues":["Will Ferrell", "Steve Carell", "Paul Rudd", "Adam McKay"],
+        # "Ironman 2": ["Robert Downey Jr", "Mickey Rourke", "Gwyneth Paltrow", "Scarlett Johansson", "Samuel L. Jackson"],
+        # "The Avengers": ["Robert Downey Jr", "Mark Rufallo", "Chris Hemsworth", "Chris Evans", "Scarlett Johansson", "Jeremy Renner"],
+        # "RED": ["Bruce Willis", "Morgan Freeman", "Helen Mirren", "John Malkovich"],
+        # "Sin City": ["Bruce Willis", "Mickey Rourke", "Jessica Alba", "Clive Owen"]
+        # }
 
-    #nomeFilme = input("Informe o nome do Filme: ")
-    #nomeAtor = input("Informe o nome de um Ator para o Filme %s: " %(nomeFilme))
-    #f_adicionaFilmeAtor(dicAcervo, nomeFilme, nomeAtor)
-    #f_insereFilmeAtores(dicAcervo)
+# Utilizando a função desenvolvida para o exercício (1)
+    nomeFilme = input("Informe o nome do Filme: ")
+    nomeAtor = input("Informe o nome de um Ator para o Filme %s: " %(nomeFilme))
+    f_adicionaFilmeAtor(dicAcervo, nomeFilme, nomeAtor)
 
-    # f_imprimeFilmes(dicAcervo)
+# Utilizando a função desenvolvida para o exercício (2)
+    f_insereFilmeAtores(dicAcervo)
 
+# Utilizando a função para fins de conferir se os filmes e atores foram inseridos corretamente
+# E também para auxiliar a escolha no exercício (3)
+    f_exibeFilmesAtores(dicAcervo, True)
+
+# Utilizando a função desenvolvida para o exercício (3)
     print("Escolha dois filmes da lista acima")
     filmeSt = input("Primeiro Filme: ")
     filmeNd = input("Segundo Filme: ")
@@ -160,11 +178,11 @@ def main():
         cod = int(input("Opcao: "))
     #fim while
 
-    # nomeAtor = input("Informe o nome de um Ator: ")
-    # f_contracenouAtor(dicAcervo, nomeAtor)
+# Utilizando a função desenvolvida para o exercício (4)
+    nomeAtor = input("Informe o nome de um Ator: ")
+    f_contracenouAtor(dicAcervo, nomeAtor)
 
-
-
+    return 0
 #fim main
 
 if __name__ == "__main__":
