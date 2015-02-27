@@ -47,9 +47,13 @@ def f_exibeAtores(dicAcervo, filmeSt, filmeNd, cod):
                 #fim for
             #fim for
         else:
-            print("Atores de %s e %s:" %(filmeSt, filmeNd))
-            f_somenteEmUmFilme(dicAcervo, filmeSt, filmeNd)
-            f_somenteEmUmFilme(dicAcervo, filmeNd, filmeSt)
+            if cod == 3:
+                print("Atores de %s e %s:" %(filmeSt, filmeNd))
+                f_somenteEmUmFilme(dicAcervo, filmeSt, filmeNd)
+                f_somenteEmUmFilme(dicAcervo, filmeNd, filmeSt)
+            else:
+                print("Condigo invalido!")
+            #fim if
         #fim if
     #fim id
 #fim funcao
@@ -122,7 +126,7 @@ def f_contracenouAtor(dic, ator):
 def main():
     dicAcervo = {
         "Anchorman 2: The Lengend Continues":["Will Ferrell", "Steve Carell", "Paul Rudd", "Adam McKay"],
-        "Ironman": ["Robert Downey Jr", "Mickey Rourke", "Gwyneth Paltrow", "Scarlett Johansson", "Samuel L. Jackson"],
+        "Ironman 2": ["Robert Downey Jr", "Mickey Rourke", "Gwyneth Paltrow", "Scarlett Johansson", "Samuel L. Jackson"],
         "The Avengers": ["Robert Downey Jr", "Mark Rufallo", "Chris Hemsworth", "Chris Evans", "Scarlett Johansson", "Jeremy Renner"],
         "RED": ["Bruce Willis", "Morgan Freeman", "Helen Mirren", "John Malkovich"],
         "Sin City": ["Bruce Willis", "Mickey Rourke", "Jessica Alba", "Clive Owen"]
@@ -135,29 +139,29 @@ def main():
     #f_insereFilmeAtores(dicAcervo)
 
     # f_imprimeFilmes(dicAcervo)
-    #
-    # print("Escolha dois filmes da lista acima")
-    # filmeSt = input("Primeiro Filme: ")
-    # filmeNd = input("Segundo Filme: ")
-    # print("\nFilmes: '%s e %s'" %(filmeSt, filmeNd))
-    # print("1 - Exibir na tela todos os Atores que aparecem nos dois Filmes")
-    # print("2 - Exibir na tela todos os Atores que estao nos dois Filmes")
-    # print("3 - Exibir na tela todos os Atores que estao somente em um dos Filmes")
-    # print("0 - Encerra")
-    # cod = int(input("Opcao: "))
-    #
-    # while cod != 0:
-    #     f_exibeAtores(dicAcervo, filmeSt, filmeNd, cod)
-    #     print("\nFilmes: '%s e %s'" %(filmeSt, filmeNd))
-    #     print("1 - Exibir na tela todos os Atores que aparecem nos dois Filmes")
-    #     print("2 - Exibir na tela todos os Atores que estao nos dois Filmes")
-    #     print("3 - Exibir na tela todos os Atores que estao somente em um dos Filmes")
-    #     print("0 - Encerra")
-    #     cod = int(input("Opcao: "))
+
+    print("Escolha dois filmes da lista acima")
+    filmeSt = input("Primeiro Filme: ")
+    filmeNd = input("Segundo Filme: ")
+    print("\nFilmes: '%s e %s'" %(filmeSt, filmeNd))
+    print("1 - Exibir na tela todos os Atores que aparecem nos dois Filmes")
+    print("2 - Exibir na tela todos os Atores que estao nos dois Filmes")
+    print("3 - Exibir na tela todos os Atores que estao somente em um dos Filmes")
+    print("0 - Encerra")
+    cod = int(input("Opcao: "))
+
+    while cod != 0:
+        f_exibeAtores(dicAcervo, filmeSt, filmeNd, cod)
+        print("\nFilmes: '%s e %s'" %(filmeSt, filmeNd))
+        print("1 - Exibir na tela todos os Atores que aparecem nos dois Filmes")
+        print("2 - Exibir na tela todos os Atores que estao nos dois Filmes")
+        print("3 - Exibir na tela todos os Atores que estao somente em um dos Filmes")
+        print("0 - Encerra")
+        cod = int(input("Opcao: "))
     #fim while
 
-    nomeAtor = input("Informe o nome de um Ator: ")
-    f_contracenouAtor(dicAcervo, nomeAtor)
+    # nomeAtor = input("Informe o nome de um Ator: ")
+    # f_contracenouAtor(dicAcervo, nomeAtor)
 
 
 
