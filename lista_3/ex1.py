@@ -95,15 +95,25 @@ def f_imprimeFilmes(dic):
 #fim funcao
 
 def f_contracenouAtor(dic, ator):
-    lst, contracanou = [], False
+    lstFilmes, lstAtores = [], []
 
-    print("Os(As) Atores/Atrizes que contracenaram com %s: " %(ator))
+    print("\nOs(As) Atores/Atrizes que contracenaram com %s: " %(ator))
     for chave, valor in dic.items():
         for elem in valor:
             if ator == elem:
-                contracenou = True
+                f_insereLista(lstFilmes, chave)
             #fim if
         #fim for
+        for elem in lstFilmes:
+            for contr in range(len(dic[elem])):
+                if ator != dic[elem][contr]:
+                    f_insereLista(lstAtores, dic[elem][contr])
+                #fim if
+            #fim for
+        #fim for
+    #fim for
+    for el in lstAtores:
+        print("\t- %s" %(el))
     #fim for
 #fim funcao
 
@@ -112,8 +122,10 @@ def f_contracenouAtor(dic, ator):
 def main():
     dicAcervo = {
         "Anchorman 2: The Lengend Continues":["Will Ferrell", "Steve Carell", "Paul Rudd", "Adam McKay"],
-        "Ironman": ["Robert Downey Jr", "Terrence Howard", "Jeff Bridges"],
-        "The Avengers": ["Robert Downey Jr", "Mark Rufallo", "Chris Hemsworth", "Chris Evans", "Scarlett Johansson", "Jeremy Renner"]
+        "Ironman": ["Robert Downey Jr", "Mickey Rourke", "Gwyneth Paltrow", "Scarlett Johansson", "Samuel L. Jackson"],
+        "The Avengers": ["Robert Downey Jr", "Mark Rufallo", "Chris Hemsworth", "Chris Evans", "Scarlett Johansson", "Jeremy Renner"],
+        "RED": ["Bruce Willis", "Morgan Freeman", "Helen Mirren", "John Malkovich"],
+        "Sin City": ["Bruce Willis", "Mickey Rourke", "Jessica Alba", "Clive Owen"]
         }
     nomeFilme, nomeAtor, filmeSt, filmeNd, cod = "", "", "", "", 5
 
