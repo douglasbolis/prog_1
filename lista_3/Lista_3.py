@@ -138,12 +138,6 @@ def f_exibeFilmesAtores(dic, ator):
 def main():
     nomeFilme, nomeAtor, filmeSt, filmeNd, cod = "", "", "", "", 5
     dicAcervo = {}
-        # "Anchorman 2: The Lengend Continues":["Will Ferrell", "Steve Carell", "Paul Rudd", "Adam McKay"],
-        # "Ironman 2": ["Robert Downey Jr", "Mickey Rourke", "Gwyneth Paltrow", "Scarlett Johansson", "Samuel L. Jackson"],
-        # "The Avengers": ["Robert Downey Jr", "Mark Rufallo", "Chris Hemsworth", "Chris Evans", "Scarlett Johansson", "Jeremy Renner"],
-        # "RED": ["Bruce Willis", "Morgan Freeman", "Helen Mirren", "John Malkovich"],
-        # "Sin City": ["Bruce Willis", "Mickey Rourke", "Jessica Alba", "Clive Owen"]
-        # }
 
 # Utilizando a função desenvolvida para o exercício (1)
     nomeFilme = input("Informe o nome do Filme: ")
