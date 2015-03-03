@@ -4,17 +4,22 @@ __author__ = 'douglas'
 # funcao responsavel para cadastrar as imagens no dicionario
 def f_cadastraImagem(dic, nome, lst):
 
-    canSupEsq = (lst[0], lst[1])
-    canInfDir = (lst[2], lst[3])
-    canSupDir = (lst[2] - lst[0], lst[1])
-    canInfEsq = (lst[0], lst[3] - lst[1])
+    canSupEsqN = (lst[0], lst[1])
+    canInfDirN = (lst[2], lst[3])
+    canSupDirN = (lst[2] - lst[0], lst[1])
+    canInfEsqN = (lst[0], lst[3] - lst[1])
 
     if nome in dic:
         print("Imagem já cadastrada.")
     else:
         if ():
             for chave, valor in dic.items():
-                if (lst[0] >= valor[0]) and (lst[2] <= valor[2]):
+                canSupEsq = (valor[0], valor[1])
+                canInfDir = (valor[2], valor[3])
+                canSupDir = (valor[2] - valor[0], valor[1])
+                canInfEsq = (valor[0], valor[3] - valor[1])
+
+                if (canSupEsq < canSupEsqN) and (canSupDir < canSupDirN) and (canInfDir < canInfDirN) and (canInfEsq < canInfEsqN):
                     print("A imagem sobrepoe outra figura.")
                 else:
                     dic[nome] = lst
