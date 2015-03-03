@@ -51,9 +51,9 @@ def f_soma(f1, f2):
 	n, d = 0, 0
 
 	d = f1[1]*f2[1]
-	n = (((d//f1[1])*f2[0]) + ((d//f2[1])*f2[0]))//d
+	n = ((d//f1[1])*f1[0]) + ((d//f2[1])*f2[0])
 	
-	return (f_simplifica(f_criaFracao(n, d)))
+	return f_simplifica(f_criaFracao(n, d))
 #fim funcao
 
 def f_subtracao(f1, f2):
@@ -91,6 +91,8 @@ def main():
 	f1 = (num1, den1)
 	f2 = (num2, den2)
 	x = f_soma(f1, f2)
+
+	# x = f_simplifica(f1)
 
 	print(x)
 
