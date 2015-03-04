@@ -141,8 +141,11 @@ def main():
 
 # Utilizando a função desenvolvida para o exercício (1)
     nomeFilme = input("Informe o nome do Filme: ")
-    nomeAtor = input("Informe o nome de um Ator para o Filme %s: " %(nomeFilme))
-    f_adicionaFilmeAtor(dicAcervo, nomeFilme, nomeAtor)
+    while nomeFilme != "":
+        nomeAtor = input("Informe o nome de um Ator para o Filme %s: " %(nomeFilme))
+        f_adicionaFilmeAtor(dicAcervo, nomeFilme, nomeAtor)
+        nomeFilme = input("Informe o nome do Filme: [String vazia encerra o loop]: ")
+    #fim while
 
 # Utilizando a função desenvolvida para o exercício (2)
     f_insereFilmeAtores(dicAcervo)

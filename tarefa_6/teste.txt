@@ -1,0 +1,15 @@
+for chave, valor in dic.items():
+                canSupEsq = (valor[0], valor[1])
+                canInfDir = (valor[2], valor[3])
+                canSupDir = (valor[2] - valor[0], valor[1])
+                canInfEsq = (valor[0], valor[3] - valor[1])
+
+                if ((canInfDir[0] >= canSupEsqN[0]) and (canInfDir[1] >= canSupEsqN[1])) or \
+                        ((canSupDir[0] >= canInfEsqN[0]) and (canSupDir[1] <= canInfEsqN[1])) or \
+                        ((canSupEsq[0] <= canInfDirN[0]) and (canSupEsq[1] <= canInfDirN[1]))or \
+                        ((canInfEsq[0] <= canSupDirN[0]) and (canInfEsq[1] >= canSupDirN[1])):
+                    print("A imagem sobrepoe outra figura.")
+                else:
+                    dic[nome] = lst
+                #fim if
+            #fim for
