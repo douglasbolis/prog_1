@@ -3,6 +3,8 @@ __author__ = 'douglas'
 # Exercício (1)
 # funcao responsavel para cadastrar as imagens no dicionario
 def f_cadastraImagem(dic, nome, lst):
+    sobrepoe = False
+
     # [x1, y1, x2, y2]
     canSupEsqN = (lst[0], lst[1])
     canInfDirN = (lst[2], lst[3])
@@ -32,11 +34,16 @@ def f_cadastraImagem(dic, nome, lst):
                         if ((canInfEsq[0] <= canSupDirN[0]) and (canInfEsq[1] >= canSupDirN[1])):
                             print("aqui 4")
                             print("A imagem sobrepoe outra figura.")
-            else:
-                print("aqui a")
-                dic[nome] = lst
+                            sobrepoe = True
+                        #fim if
+                    #fim if
+                #fim if
             #fim if
         #fim for
+        if not sobrepoe:
+            print("aqui a")
+            dic[nome] = lst
+        #fim if
     #fim if
 #fim funcao
 
