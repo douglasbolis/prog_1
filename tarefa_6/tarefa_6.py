@@ -25,23 +25,16 @@ def f_cadastraImagem(dic, nome, lst):
             canSupDir = (valor[2] - valor[0], valor[1])
             canInfEsq = (valor[0], valor[3] - valor[1])
 
-            if ((canInfDir[0] >= canSupEsqN[0]) and (canInfDir[1] >= canSupEsqN[1])):
-                print("aqui 1")
-                if ((canSupDir[0] >= canInfEsqN[0]) and (canSupDir[1] <= canInfEsqN[1])):
-                    print("aqui 2")
-                    if ((canSupEsq[0] <= canInfDirN[0]) and (canSupEsq[1] <= canInfDirN[1])):
-                        print("aqui 3")
-                        if ((canInfEsq[0] <= canSupDirN[0]) and (canInfEsq[1] >= canSupDirN[1])):
-                            print("aqui 4")
-                            print("A imagem sobrepoe outra figura.")
-                            sobrepoe = True
-                        #fim if
-                    #fim if
-                #fim if
+            if ((canInfDir[0] >= canSupEsqN[0]) and (canInfDir[1] >= canSupEsqN[1])) or \
+                    ((canSupDir[0] >= canInfEsqN[0]) and (canSupDir[1] <= canInfEsqN[1])) or \
+                    ((canSupEsq[0] <= canInfDirN[0]) and (canSupEsq[1] <= canInfDirN[1])) or \
+                    ((canInfEsq[0] <= canSupDirN[0]) and (canInfEsq[1] >= canSupDirN[1])):
+                print("Imagem nao cadastrada\nA imagem sobrepoe outra figura.\n")
+                sobrepoe = True
             #fim if
         #fim for
         if not sobrepoe:
-            print("aqui a")
+            print("Imagem cadastrada com sucesso!\n")
             dic[nome] = lst
         #fim if
     #fim if
@@ -66,7 +59,6 @@ def main():
             xf = int(input("X final: "))
             yf = int(input("Y final: "))
             if ((xf > xi) and (xf <= tamTela[2])) and ((yf > yi) and (yf <= tamTela[3])):
-                print("aqui A1")
                 dimensao = [xi, yi, xf, yf, 0]
                 f_cadastraImagem(dicPropag, nomeImagem, dimensao)
             #fim if
